@@ -1,2 +1,1 @@
-abc
-123
+Ala ma kota
