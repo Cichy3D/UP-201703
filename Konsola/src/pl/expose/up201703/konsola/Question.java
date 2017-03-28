@@ -19,21 +19,31 @@ public class Question {
 		if(wiek<18){
 			System.out.println("Sorki "+imie+", nie mo¿esz jeszcze piæ, poczekaj "+(18-wiek)+" lat");
 		} else {
-			System.out.println("OK "+imie+", to co? Idziemy piæ?");
+			String odpowiedz;
 			
-			System.out.print("T/N > ");
-			String odp = scanner.nextLine();
+			odpowiedz = pytanie(scanner, imie);
 			
-			if(odp.equals("N")){
+			while(odpowiedz.equals("N")){
 				System.out.println("Straszny z ciebie burak!");
-			} else {
-				System.out.println("Straszny z Ciebie pijak. Nie wypada tak w wieku "+wiek+" lat.");
+				
+				odpowiedz = pytanie(scanner, imie);
 			}
+			
+			System.out.println("Straszny z Ciebie pijak. Nie wypada tak w wieku "+wiek+" lat.");
+			
 			
 		}
 		
 		scanner.close();
 		System.out.println("END.");
+	}
+
+	private static String pytanie(Scanner scanner, String imie) {
+		String odp;
+		System.out.println("OK "+imie+", to co? Idziemy piæ?");
+		System.out.print("T/N > ");
+		odp = scanner.nextLine();
+		return odp;
 	}
 
 }
