@@ -1,40 +1,52 @@
 package pl.expose.up201703.konsola;
 
-import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Statystyka {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		System.out.println("Podaj ci¹g liczb.");
+		
+		System.out.println("Podaj iloœæ liczb.");
+		Scanner scanner = new Scanner(System.in);
+		
+		Locale myLocale = new Locale(System.getProperty("user.language") , System.getProperty("user.country"));
+
+		int n = scanner.nextInt();
+		
+		double[] tablica = new double[n];
+		
+		System.out.println("Podaj ci¹g o d³ugoœci "+n+" liczb.");
+		
+		for(int i=0; i<tablica.length; i++){
+			tablica[i] = scanner.nextDouble();
+		}
+		System.out.println("Liczby wpisano.");
+		
 		
 		int ileWpisow = 0;
-		int suma = 0;
+		double suma = 0;
 		int sumaZnakow = 0;
 		
-		//System.out.println( new File(".").getAbsolutePath() );
+		for(double liczba : tablica){
+
+			ileWpisow++;
+			suma += liczba;
+			sumaZnakow += (""+liczba).length();
+			
+		}
 		
-		Scanner scanner = new Scanner(Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream("liczby.txt"));
-		String odpowiedzUzytkownika;
+		NumberFormat nf = NumberFormat.getNumberInstance(myLocale);
+		double srednia = ((double)suma)/ileWpisow;
 		
-		do{
-			odpowiedzUzytkownika = scanner.nextLine();
-			if(  odpowiedzUzytkownika.matches("\\d+")  ){
-				int odpInt = Integer.parseInt(odpowiedzUzytkownika);
-				ileWpisow++;
-				suma += odpInt;
-				sumaZnakow += odpowiedzUzytkownika.length();
-			} else {
-				System.out.println("Wpis nie pasuje do wzorca");
-			}
-		}while(!odpowiedzUzytkownika.equals("."));
 		
-		System.out.println("Wposów: "+ileWpisow);
-		System.out.println("Suma: "+suma);
-		System.out.println("Œrednia: "+((double)suma)/ileWpisow);
-		System.out.println("Suma znaków: "+sumaZnakow);
+		
+		System.out.println("Wposów:      " + nf.format(ileWpisow) );
+		System.out.println("Suma:        " + nf.format(suma)      );
+		System.out.println("Œrednia:     " + nf.format(srednia)   );
+		System.out.println("Suma znaków: " + nf.format(sumaZnakow));
 		
 		scanner.close();
 	}
