@@ -1,6 +1,5 @@
 package pl.expose.up201703.konsola;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Scanner;
 
