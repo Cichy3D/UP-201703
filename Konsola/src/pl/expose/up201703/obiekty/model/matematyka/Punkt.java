@@ -1,7 +1,5 @@
 package pl.expose.up201703.obiekty.model.matematyka;
 
-import javax.print.attribute.standard.MediaSize.Other;
-
 public class Punkt {
 
 	private double x = 0;
@@ -40,8 +38,8 @@ public class Punkt {
 		return "Punkt p[x,y] = [ " + x + " , " + y + " ]";
 	}
 	
-	public double dlugosc(Punkt b){
-		return dlugosc( this , b );
+	public double dlugosc(Punkt bbbb){
+		return dlugosc( this , bbbb );
 	}
 	
 	public static double dlugosc(Punkt a, Punkt b){
