@@ -1,5 +1,7 @@
 package pl.expose.up201703.baza.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class Dokument {
@@ -20,6 +22,14 @@ public class Dokument {
 		this.tresc = tresc;
 		this.autor = autor;
 		this.data = data;
+	}
+	
+	public Dokument(ResultSet row) throws SQLException{
+		id    = row.getLong   ("id");
+		tytul = row.getString ("tytul");
+		tresc  = row.getString ("tresc");
+		long autorId  = row.getLong("autor");
+		data  = row.getDate("data");
 	}
 
 	public Long getId() {

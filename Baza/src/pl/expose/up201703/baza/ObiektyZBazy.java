@@ -36,6 +36,30 @@ public class ObiektyZBazy {
 		}
 		
 		
+		
+		
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery("SELECT * FROM dokumenty");
+		
+		while(rs.next()){
+			Dokument d = new Dokument(rs);
+			dokumenty.add(d);
+			
+			long autorId  = rs.getLong("autor");
+			System.out.println("dla dokumentu "+d.getId()+" autorId = "+autorId);
+			
+			for(Osoba o : osoby){
+				if(o.getId().equals(autorId)){
+					d.setAutor( o );
+					break;
+				}
+			}
+		}
+		rs.close();
+
+		for(Dokument d : dokumenty){
+			System.out.println(d);
+		}
 
 	}
 
