@@ -43,16 +43,16 @@ public class Odczyt {
 		rs.close();
 
 		
-		System.out.println("Nowa osoba,\nPodaj nazwê osoby:");
-		Scanner scanner = new Scanner(System.in);
-		String  nazwa   = scanner.nextLine();
-		System.out.println("Podaj wiek osoby:");
-		long    wiek    = scanner.nextInt();
-		
-		stmt = conn.createStatement();
-		int rows = stmt.executeUpdate("INSERT INTO osoby (nazwa, wiek) VALUES ( \""+ nazwa +"\",  "+ wiek +" )");
-		
-		System.out.println("Wierszy zminionych: "+rows);
+//		System.out.println("Nowa osoba,\nPodaj nazwê osoby:");
+//		Scanner scanner = new Scanner(System.in);
+//		String  nazwa   = scanner.nextLine();
+//		System.out.println("Podaj wiek osoby:");
+//		long    wiek    = scanner.nextInt();
+//		
+//		stmt = conn.createStatement();
+//		int rows = stmt.executeUpdate("INSERT INTO osoby (nazwa, wiek) VALUES ( \""+ nazwa +"\",  "+ wiek +" )");
+//		
+//		System.out.println("Wierszy zminionych: "+rows);
 		
 		conn.close();
 		System.out.println("End.");
