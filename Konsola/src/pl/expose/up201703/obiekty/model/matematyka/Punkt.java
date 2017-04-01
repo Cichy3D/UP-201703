@@ -2,8 +2,8 @@ package pl.expose.up201703.obiekty.model.matematyka;
 
 public class Punkt {
 
-	private double x = 0;
-	private double y = 0;
+	protected double x = 0;
+	protected double y = 0;
 	
 	public Punkt(){
 	}
@@ -38,8 +38,8 @@ public class Punkt {
 		return "Punkt p[x,y] = [ " + x + " , " + y + " ]";
 	}
 	
-	public double dlugosc(Punkt bbbb){
-		return dlugosc( this , bbbb );
+	public double dlugosc(Punkt inny){
+		return dlugosc( this , inny );
 	}
 	
 	public static double dlugosc(Punkt a, Punkt b){

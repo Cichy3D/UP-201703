@@ -17,6 +17,7 @@ public class Trojkat extends Figura {
 		this.punktA = punktA;
 		this.punktB = punktB;
 		this.punktC = punktC;
+		punktC.x = 1;
 	}
 	
 	public double getObwod() {

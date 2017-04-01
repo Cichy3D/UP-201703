@@ -8,6 +8,7 @@ import pl.expose.up201703.obiekty.model.matematyka.Kolo;
 import pl.expose.up201703.obiekty.model.matematyka.Prostokat;
 import pl.expose.up201703.obiekty.model.matematyka.Punkt;
 import pl.expose.up201703.obiekty.model.matematyka.Trojkat;
+import pl.expose.up201703.obiekty.model.matematyka.Wektor;
 
 public class Main {
 
@@ -15,7 +16,7 @@ public class Main {
 		
 		Punkt pa = new Punkt(0, 10);
 		Punkt pb = new Punkt(10, 0);
-		Punkt pc = new Punkt(0, 0);
+		Punkt pc = new Wektor();
 		
 		List<Figura> figury = new ArrayList<>();
 		figury.add(new Trojkat(pa, pb, pc));
