@@ -14,9 +14,18 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Punkt pa = new Punkt(0, 10);
-		Punkt pb = new Punkt(10, 0);
-		Punkt pc = new Wektor();
+		Punkt pa = new Punkt();
+		Wektor w = new Wektor(10,0);
+		Punkt pb = w.add(pa);
+		double kat = w.getKat() + Math.PI/2;
+		w.setKat(kat);
+		Punkt pc = w.add(pa);
+		
+		System.out.println("pa = " + pa);
+		System.out.println("pb = " + pb);
+		System.out.println("pc = " + pc);
+		
+		
 		
 		List<Figura> figury = new ArrayList<>();
 		figury.add(new Trojkat(pa, pb, pc));

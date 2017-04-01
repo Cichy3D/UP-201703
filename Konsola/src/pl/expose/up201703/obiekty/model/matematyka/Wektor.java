@@ -14,6 +14,10 @@ public class Wektor extends Punkt {
 		super(inny);
 	}
 	
+	public Wektor(Punkt a, Punkt b) {
+		super(  b.x-a.x  , b.y-a.y  );
+	}
+	
 	public double getR(){
 		Punkt punkt = new Punkt(0,0);
 		return dlugosc(punkt);
@@ -50,4 +54,9 @@ public class Wektor extends Punkt {
 	public Wektor minus(Wektor inny){
 		return add(   inny.reverse()   );
 	}
+	
+	public double mul(Wektor inny){
+		return Math.abs(  x * inny.y  -  inny.x * y );
+	}
+	
 }

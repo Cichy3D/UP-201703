@@ -17,22 +17,20 @@ public class Trojkat extends Figura {
 		this.punktA = punktA;
 		this.punktB = punktB;
 		this.punktC = punktC;
-		punktC.x = 1;
 	}
 	
 	public double getObwod() {
-		return punktA.dlugosc(punktB) + punktB.dlugosc(punktC) + punktA.dlugosc(punktC);
+		double d1 = punktA.dlugosc(punktB);
+		double d2 = punktB.dlugosc(punktC);
+		double d3 = punktA.dlugosc(punktC);
+		return d1 + d2 + d3;
 	}
 	
 	public double getPole(){
-		return 0.5 * Math.abs(  
-				+ punktA.getX() * punktB.getY() 
-				+ punktB.getX() * punktC.getY() 
-				+ punktC.getX() * punktA.getY() 
-				- punktC.getX() * punktB.getY() 
-				- punktA.getX() * punktC.getY() 
-				- punktB.getX() * punktA.getY() 
-			);
+		Wektor w1 = new Wektor(punktA, punktB);
+		Wektor w2 = new Wektor(punktA, punktC);
+		
+		return 0.5 * w1.mul(w2);
 	}
 	
 
