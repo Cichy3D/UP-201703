@@ -1,14 +1,14 @@
 package pl.expose.up201703.obiekty.model.pojemniki;
 
-public class Niszczarka implements Pojemnik {
+public class Niszczarka<T> implements Pojemnik<T> {
 
 	@Override
-	public void dodaj(Object o) {
+	public void dodaj(T o) {
 		System.out.println("Zniszczono: "+o);
 	}
 
 	@Override
-	public void usun(Object o) {
+	public void usun(T o) {
 		System.out.println("Nie da siê usun¹æ z niszczarki obiektu "+o);
 	}
 

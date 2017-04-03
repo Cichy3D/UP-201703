@@ -47,10 +47,30 @@ public class Prostokat extends Figura{
 	public double getD() {
 		return d;
 	}
+	
+	public Punkt getPunktC() {
+		Wektor w = new Wektor(punktA, punktB);
+		w.setKat(  w.getKat() - Math.PI/2   );
+		w.setR(d);
+		return w.add(punktB);
+	}
+	
+	public Punkt getPunktD() {
+		Wektor w = new Wektor(punktA, punktB);
+		w.setKat(  w.getKat() - Math.PI/2   );
+		w.setR(d);
+		return w.add(punktA);
+	}
 
 	public void setD(double d) {
 		this.d = d;
 	}
 
+	@Override
+	public String toString() {
+		return "Prostokat [A=" + getPunktA() + ", B=" + getPunktB() + ", C=" + getPunktC()
+				+ ", D=" + getPunktD() + "]";
+	}
 
+    
 }

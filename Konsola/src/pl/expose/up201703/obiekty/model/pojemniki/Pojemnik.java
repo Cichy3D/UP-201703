@@ -1,10 +1,10 @@
 package pl.expose.up201703.obiekty.model.pojemniki;
 
-public interface Pojemnik {
+public interface Pojemnik<T> {
 
-	void dodaj(Object o);
+	void dodaj(T o);
 	
-	void usun(Object o);
+	void usun(T o);
 	
 	void wypisz();
 	

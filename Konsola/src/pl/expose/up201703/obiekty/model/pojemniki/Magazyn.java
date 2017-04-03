@@ -3,21 +3,21 @@ package pl.expose.up201703.obiekty.model.pojemniki;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Magazyn implements Pojemnik { 
+public class Magazyn<K> implements Pojemnik<K> { 
 
-	private List<Object> stanMagazynu = new ArrayList<>();
+	private List<K> stanMagazynu = new ArrayList<>();
 	
-	public void dodaj(Object o){
+	public void dodaj(K o){
 		stanMagazynu.add(o);
 	}
 	
-	public void usun(Object o){
+	public void usun(K o){
 		stanMagazynu.remove(o);
 	}
 	
 	public void wypisz(){
 		System.out.println("Stan magazynu:");
-		for(Object o : stanMagazynu){
+		for(K o : stanMagazynu){
 			System.out.println("    " + o);
 		}
 	}

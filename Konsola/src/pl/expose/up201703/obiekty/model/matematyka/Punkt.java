@@ -1,5 +1,7 @@
 package pl.expose.up201703.obiekty.model.matematyka;
 
+import java.util.Locale;
+
 public class Punkt {
 
 	protected double x = 0;
@@ -35,7 +37,8 @@ public class Punkt {
 	}
 
 	public String toString(){
-		return "Punkt p[x,y] = [ " + x + " , " + y + " ]";
+		
+		return String.format(Locale.US, "Punkt p[x,y] = [ %.2f , %.2f ]", x, y);
 	}
 	
 	public double dlugosc(Punkt inny){
