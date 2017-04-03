@@ -38,7 +38,7 @@ public class Punkt {
 
 	public String toString(){
 		
-		return String.format(Locale.US, "Punkt p[x,y] = [ %.2f , %.2f ]", x, y);
+		return String.format(Locale.US, "Punkt p[x,y] = [ %.2f , %.2f ]", getX(), getY());
 	}
 	
 	public double dlugosc(Punkt inny){
