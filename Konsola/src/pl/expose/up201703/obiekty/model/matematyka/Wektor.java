@@ -1,6 +1,6 @@
 package pl.expose.up201703.obiekty.model.matematyka;
 
-public class Wektor extends Punkt {
+public class Wektor extends Punkt implements Comparable<Wektor>{
 
 	public Wektor() {
 		super();
@@ -61,5 +61,10 @@ public class Wektor extends Punkt {
 	
 	public Wektor mul(double liczba){
 		return new Wektor( this.x*liczba,  this.y*liczba );
+	}
+
+	@Override
+	public int compareTo(Wektor o) {
+		return ((Double)getR()).compareTo(o.getR());
 	}
 }
