@@ -59,4 +59,7 @@ public class Wektor extends Punkt {
 		return Math.abs(  x * inny.y  -  inny.x * y );
 	}
 	
+	public Wektor mul(double liczba){
+		return new Wektor( this.x*liczba,  this.y*liczba );
+	}
 }
