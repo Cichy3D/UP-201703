@@ -9,18 +9,19 @@ public class WatekRoboczy extends Thread {
 	
 	public WatekRoboczy(Integer numerWatku){
 		this.numerWatku = numerWatku;
-		setDaemon(true);
+		setDaemon(false);
 	}
 	
 	public void run() {
         while(true){
         	try {
-				Thread.sleep(100);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {}
         	
         	if(zadanie!=null){
         		zadanie.accept(numerWatku);
-        	}
+        		zadanie = null;
+        	} 
         }
     }
 
