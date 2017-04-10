@@ -1,8 +1,17 @@
 package pl.expose.up201703.obiekty.model.baza;
 
-public class Osoba {
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Osoba implements Externalizable {
 	
-	private Long id;
+	private static final long serialVersionUID = 2L;
+	private long id = 0;
 	private String nazwa;
 	private int wiek;
 	private String plec;
@@ -26,11 +35,11 @@ public class Osoba {
 		this.zyje = zyje;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -69,6 +78,30 @@ public class Osoba {
 	@Override
 	public String toString() {
 		return "Osoba [nazwa=" + nazwa + ", wiek=" + wiek + ", plec=" + plec + ", zyje=" + (zyje ? "Tak" : "Nie") + "]";
+	}
+
+	@Override
+	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+		id = in.readLong();
+		wiek = in.readInt();
+		nazwa = (String) in.readObject();
+		plec = (String) in.readObject();
+		zyje = wiek < 125;
+		
+		Date czas = (Date)in.readObject();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println("czytam osobê zapisan¹ w chwili: "+df.format(czas));
+		
+	}
+
+	@Override
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeLong(id);
+		out.writeInt(wiek);
+		out.writeObject(nazwa);
+		out.writeObject(plec);
+		
+		out.writeObject(new Date());
 	}
 	
 	
