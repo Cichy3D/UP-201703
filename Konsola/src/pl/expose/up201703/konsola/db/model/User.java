@@ -7,7 +7,7 @@ import java.util.List;
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 12563456245634L;
-	private static final String ROOT_USERNAME = "root";
+	public static final String ROOT_USERNAME = "root";
 	
 	private String name;
 	private boolean admin;
