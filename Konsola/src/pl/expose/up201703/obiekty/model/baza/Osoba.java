@@ -103,6 +103,23 @@ public class Osoba implements Externalizable {
 		
 		out.writeObject(new Date());
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Osoba other = (Osoba) obj;
+		if (nazwa == null) {
+			if (other.nazwa != null)
+				return false;
+		} else if (!nazwa.equals(other.nazwa))
+			return false;
+		return true;
+	}
 	
 	
 }
