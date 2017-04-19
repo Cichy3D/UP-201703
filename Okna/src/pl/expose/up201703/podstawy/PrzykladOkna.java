@@ -43,13 +43,8 @@ public class PrzykladOkna extends JFrame{
 	
 	public static void main(String[] args) throws Exception {
 		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-		JFrame okno = new PrzykladOkna();
+		new PrzykladOkna();
 		
-		while(okno.isVisible()){
-			Thread.sleep(1000);
-			//drawPanel.repaint();
-			System.out.println(okno.getSize());
-		}
 	}
 
 }
