@@ -17,6 +17,17 @@ public class Osoba implements Externalizable {
 	private String plec;
 	private boolean zyje;
 	
+	public static Osoba buildOsoba(String csv){
+		String[] polaOsoby = csv.split(",");
+		Osoba o = new Osoba(
+				polaOsoby[1], 
+				Integer.parseInt(polaOsoby[2]),
+				polaOsoby[3], 
+				"1".equals(polaOsoby[4]));
+		o.setId(Long.parseLong(polaOsoby[0]));
+		return o;
+	}
+	
 	public Osoba() {
 	}
 	
