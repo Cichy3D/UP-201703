@@ -1,4 +1,4 @@
-package pl.expose.up201703.podstawy;
+package pl.expose.up201703.okna.podstawy;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
