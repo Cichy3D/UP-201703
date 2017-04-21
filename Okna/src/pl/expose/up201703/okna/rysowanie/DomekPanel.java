@@ -7,7 +7,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
+import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.swing.JPanel;
 
@@ -26,6 +28,8 @@ public class DomekPanel extends JPanel {
 
 	@Override public void paintComponent(Graphics og) {
 		Graphics2D g = (Graphics2D) og;
+		
+		//LocalTime t = LocalTime.now();
 		
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,      RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);

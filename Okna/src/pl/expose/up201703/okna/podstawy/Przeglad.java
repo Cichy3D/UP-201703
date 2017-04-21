@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.RadialGradientPaint;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -31,10 +32,13 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 
+import pl.expose.up201703.okna.komponenty.PanelOpcji;
+
 public class Przeglad extends JFrame {
 
 	public JProgressBar progress;
 	public JComboBox combo;
+	public PanelOpcji panelOpcji;
 
 	public Przeglad() throws HeadlessException {
 		super("Przegl¹d komponentów Swing'u");
@@ -59,21 +63,8 @@ public class Przeglad extends JFrame {
 		scrollLisy.setPreferredSize(new Dimension(60, 100));
 		panelGlowny.add(scrollLisy);
 		
-		JPanel radioPanel = (JPanel) panelGlowny.add(new JPanel());
-		radioPanel.setLayout(new BoxLayout(radioPanel, BoxLayout.PAGE_AXIS));
-		radioPanel.setBorder(BorderFactory.createTitledBorder(
-				BorderFactory.createEtchedBorder(EtchedBorder.RAISED),"Opcje"));
-		{
-			ButtonGroup grupa = new ButtonGroup();
-			JRadioButton radio1 = (JRadioButton) radioPanel.add(new JRadioButton("Opcja 1"));
-			JRadioButton radio2 = (JRadioButton) radioPanel.add(new JRadioButton("Opcja 2"));
-			JRadioButton radioA = (JRadioButton) radioPanel.add(new JRadioButton("Opcja A"));
-			JRadioButton radioB = (JRadioButton) radioPanel.add(new JRadioButton("Opcja B"));
-			grupa.add(radio1);
-			grupa.add(radio2);
-			grupa.add(radioA);
-			grupa.add(radioB);
-		}
+		panelOpcji = (PanelOpcji) panelGlowny.add(new PanelOpcji("OdpowiedŸ: ", "A",  "B", "C", "D", "inna opcja"));
+		
 		progress = (JProgressBar)panelGlowny.add(new JProgressBar(SwingConstants.HORIZONTAL));
 		
 		
@@ -85,14 +76,15 @@ public class Przeglad extends JFrame {
 		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 		
 		Przeglad p = new Przeglad();
-		
+		p.panelOpcji.setSelectedItem("B");
 		
 		
 		//new JFileChooser().showOpenDialog(null);
 		int t = 0;
 		while(p.isVisible()){
 			Thread.sleep(50);
-			int index = p.combo.getSelectedIndex();
+			int index = p.panelOpcji.getSelectedIndex();
+			System.out.println(p.panelOpcji.getSelectedItem());
 			
 			t = (t+index)%100;
 			p.progress.setValue(t);
