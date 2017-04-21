@@ -6,6 +6,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -20,6 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
+
+import pl.expose.up201703.okna.komponenty.PanelOpcji;
 
 public class ZdarzeniaDemo extends JFrame {
 
@@ -72,6 +76,24 @@ public class ZdarzeniaDemo extends JFrame {
 		setJMenuBar(menuBar);
 		JMenu opcjeMenu = menuBar.add(new JMenu("Opcje"));
 		opcjeMenu.add(akcja);
+		
+		PanelOpcji panelOpcji = (PanelOpcji) panelGlowny
+				.add(new PanelOpcji("Do it!", "Bêdziemy", "S³uchaæ", "Zdarzeñ", "Na", "Panelu", "Opcji"));
+		
+//		panelOpcji.addMouseMotionListener(new MouseMotionAdapter() {
+//			public void mouseMoved(MouseEvent e) {
+//				System.out.println("Ruch myszy: "+e.getXOnScreen()+", "+e.getYOnScreen());
+//			}
+//		});
+
+		panelOpcji.addSelectionChangeListener(new PanelOpcji.SelectionChangeListener() {
+			public void onSelectionChanged() {
+				System.out.println("Selekcja zmieniona na "+panelOpcji.getSelectedItem());
+			}
+		});
+		
+		panelOpcji.setSelectedItem("Zdarzeñ");
+		
 		
 		
 		addWindowListener(new WindowAdapter() {
