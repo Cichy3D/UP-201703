@@ -1,7 +1,6 @@
 package pl.expose.up201703.okna.zdarzenia;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,6 +19,7 @@ public class LightsOut extends JFrame {
 
 	static LightPanel[][] pole = new LightPanel[5][5];
 	static Random random = new Random();
+	static int level = 1;
 	
 	public LightsOut(){
 		super("Lights Out");
@@ -38,22 +38,10 @@ public class LightsOut extends JFrame {
 				int x = i/5, y = i%5;
 				pole[x][y] = new LightPanel();
 				centerPanel.add(pole[x][y]);
-				Component mojeOkno = this;
+				JFrame mojeOkno = this;
 				pole[x][y].addMouseListener(new MouseAdapter() {
 					public void mouseReleased(MouseEvent e) {
-						pole[x][y].changeStan();
-						if(x>0){
-							pole[x-1][y].changeStan();
-						}
-						if(x<4){
-							pole[x+1][y].changeStan();
-						}
-						if(y>0){
-							pole[x][y-1].changeStan();
-						}
-						if(y<4){
-							pole[x][y+1].changeStan();
-						}
+						oneMove(x, y);
 						repaint();
 						boolean nieWygral = false;
 						for(int a = 0; a<5; a++){
@@ -63,10 +51,14 @@ public class LightsOut extends JFrame {
 						}
 						if(!nieWygral){
 							JOptionPane.showMessageDialog(mojeOkno, "Zwyciêstwo!", "Wygrana", JOptionPane.INFORMATION_MESSAGE);
+							level++;
+							mojeOkno.setTitle("Lights Out, level: "+level);
 							newLevel();
 							repaint();
 						}
 					}
+
+					
 				});
 			}
 		}
@@ -97,10 +89,28 @@ public class LightsOut extends JFrame {
 	public static void newLevel(){
 		for(int x=0; x<5; x++){
 			for(int y=0; y<5; y++){
-				pole[x][y].setStan(random.nextBoolean() && random.nextBoolean());
+				pole[x][y].setStan(false);
 			}
 		}
-		pole[random.nextInt(5)][random.nextInt(5)].setStan(true);
+		for(int i=0; i<level; i++){
+			oneMove(random.nextInt(5), random.nextInt(5));
+		}
+	}
+	
+	public static void oneMove(int x, int y) {
+		pole[x][y].changeStan();
+		if(x>0){
+			pole[x-1][y].changeStan();
+		}
+		if(x<4){
+			pole[x+1][y].changeStan();
+		}
+		if(y>0){
+			pole[x][y-1].changeStan();
+		}
+		if(y<4){
+			pole[x][y+1].changeStan();
+		}
 	}
 
 }
