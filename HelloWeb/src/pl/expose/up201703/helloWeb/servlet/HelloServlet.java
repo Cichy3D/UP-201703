@@ -6,10 +6,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,10 +35,25 @@ public class HelloServlet extends HttpServlet {
 		request.getParameterMap()
 			.forEach( (k,v)->System.out.println("Nazwa:" + k + ", wartoœæ: "+Arrays.asList(v)) );
 		
+		String addr = request.getRemoteHost();
+		System.out.println(addr);
 		
 		PrintWriter out = response.getWriter();
+		Cookie[] cookies = request.getCookies();
+		if(cookies!=null && cookies.length>0
+				&& "user".equals(cookies[0].getName()) && "id_sessji".equals(cookies[0].getValue())){
+			out.println("Witaj ponownie!");
+		}
 		
-		out.println("Czas Serwera: "+df.format(new Date()));
+		if("192.168.5.204".equals(addr)){
+			out.println("Buuu");
+		} else {
+			out.println("Czas Serwera: "+df.format(new Date()));
+		}
+		
+		Cookie cookie = new Cookie("user", "id_sessji");
+		cookie.setMaxAge(60);
+		response.addCookie(cookie);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
